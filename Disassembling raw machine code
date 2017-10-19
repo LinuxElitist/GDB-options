@@ -1,0 +1,60 @@
+Program:
+#include <stdio.h>                                                                                                                          
+                                                                                                                                            
+int main(void)                                                                                                                              
+{                                                                                                                                           
+    char p1[] = "Sam";                                                                                                                      
+    char *p2 = "Bob";                                                                                                                       
+                                                                                                                                            
+    printf("p1 is %s, p2 is %s\n", p1, p2);                                                                                                 
+    return 0;                                                                                                                               
+}  
+
+
+
+sbk@donna:~/gdb$ gdb ./sys
+GNU gdb (Ubuntu 7.12.50.20170314-0ubuntu1.1) 7.12.50.20170314-git
+Copyright (C) 2017 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from ./sys...done.
+(gdb) disa
+disable      disassemble  
+(gdb) disa
+disable      disassemble  
+(gdb) disassemble /r main
+Dump of assembler code for function main:
+   0x0000000000000710 <+0>:	55	push   %rbp
+   0x0000000000000711 <+1>:	48 89 e5	mov    %rsp,%rbp
+   0x0000000000000714 <+4>:	48 83 ec 20	sub    $0x20,%rsp
+   0x0000000000000718 <+8>:	64 48 8b 04 25 28 00 00 00	mov    %fs:0x28,%rax
+   0x0000000000000721 <+17>:	48 89 45 f8	mov    %rax,-0x8(%rbp)
+   0x0000000000000725 <+21>:	31 c0	xor    %eax,%eax
+   0x0000000000000727 <+23>:	c7 45 f4 53 61 6d 00	movl   $0x6d6153,-0xc(%rbp)
+   0x000000000000072e <+30>:	48 8d 05 bf 00 00 00	lea    0xbf(%rip),%rax        # 0x7f4
+   0x0000000000000735 <+37>:	48 89 45 e8	mov    %rax,-0x18(%rbp)
+   0x0000000000000739 <+41>:	48 8b 55 e8	mov    -0x18(%rbp),%rdx
+   0x000000000000073d <+45>:	48 8d 45 f4	lea    -0xc(%rbp),%rax
+   0x0000000000000741 <+49>:	48 89 c6	mov    %rax,%rsi
+   0x0000000000000744 <+52>:	48 8d 3d ad 00 00 00	lea    0xad(%rip),%rdi        # 0x7f8
+   0x000000000000074b <+59>:	b8 00 00 00 00	mov    $0x0,%eax
+   0x0000000000000750 <+64>:	e8 73 fe ff ff	callq  0x5c8
+   0x0000000000000755 <+69>:	b8 00 00 00 00	mov    $0x0,%eax
+   0x000000000000075a <+74>:	48 8b 4d f8	mov    -0x8(%rbp),%rcx
+   0x000000000000075e <+78>:	64 48 33 0c 25 28 00 00 00	xor    %fs:0x28,%rcx
+   0x0000000000000767 <+87>:	74 05	je     0x76e <main+94>
+   0x0000000000000769 <+89>:	e8 52 fe ff ff	callq  0x5c0
+   0x000000000000076e <+94>:	c9	leaveq 
+   0x000000000000076f <+95>:	c3	retq   
+End of assembler dump.
+(gdb) 
