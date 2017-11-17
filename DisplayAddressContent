@@ -1,0 +1,12 @@
+r
+
+Starting program: /home/sbk/C2Rust/cross-checks/cyg-profile/case 
+
+
+Breakpoint 2, __cyg_profile_func_enter (func=0x555555554f6d <_GLOBAL__sub_I__Z24__cyg_profile_func_enterPvS_()>, call_site=0x555555554ffd <__libc_csu_init+77>) at test.cpp:42
+
+42 void __cyg_profile_func_enter(void *func, void *call_site) {
+
+x /s 0x555555554f6d
+
+0x555555554f6d <_GLOBAL__sub_I__Z24__cyg_profile_func_enterPvS_()>: "UH\\211\\345H\\213E\\bH\\211\\306H\\215=\\356\\377\\377\\377\\350\\314\\375\\377\\377\\276\\377\\377"
