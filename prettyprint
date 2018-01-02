@@ -7,3 +7,6 @@ define plist
 end
 
 (gdb) plist "myList"
+
+
+;; Above script should be included in ~/.gdbinit 
