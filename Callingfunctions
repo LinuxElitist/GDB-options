@@ -1,0 +1,8 @@
+One of the more useful things is that if you are running the program from a debugger, you can call functions from inside the debugger.  
+For example:
+
+(gdb) call printf("hello world %d\n", getpid())
+
+Will actually cause the program to print the string "hello world" and the programs process ID number.
+
+This can be extraordinarily useful when debugging.  It's worthwhile to write functions who's only purpose is to be called from the debugger and dump out information about the data you're working on.
